@@ -1,0 +1,83 @@
+
+#include<iostream>
+#include<windows.h>
+
+#define FULL_GAS 85
+
+class Car
+{
+public:
+	std::string color;
+	std::string engine;
+	float gas_tank;
+	unsigned int Wheel;
+
+	void setColor(std::string col);
+	void setEngine(std::string eng);
+	void setWheel(unsigned int whe);
+	void fill_Tank(int liter);
+	int runing(void);
+	void waring(void);
+};
+
+void Car::setColor(std::string col)
+{
+	color = col;
+}
+
+void Car::setEngine(std::string eng)
+{
+	engine = eng;
+}
+
+void Car::setWheel(unsigned int whe)
+{
+
+}
+void Car::fill_tank(float liter)
+{
+	gas_tank += liter;
+}
+
+int Car::runing(void)
+{
+	std::cout<<"我正在以120的时速往前移动。。。越过那高山越过那河。。\n";
+	gas_tank--;
+
+	std::cout<<"当前还剩"<<100*gas_tank/FULL_GAS<<"%"<<"油量!\n";
+	return gas_tank;
+
+}
+
+void Car::waring(void)
+{
+	std::cout<<"WARNING!!"<<"还剩"<<100*gas_tank/FULL_GAS<<"%"<<"油量！";
+}
+
+int main()
+{
+	char i;
+	Car mycar;
+
+	mycar.setColor("WHITE");
+	mycar.setEngine("V8");
+	mycar.setWheel(4);
+
+	mycar.gas_tank = FULL_GAS;
+
+	while(mycar.runing())
+	{
+		if(mycar.runing() < 10 )
+		{
+			mycar.waring();
+			std::cout<<"请问是否加满油再行驶？（Y/N）\n";
+			std::cin>>i;
+			if('Y' == i || 'Y' == i )
+			{
+				mycar.fillTank(FULL_GAS);
+			}
+		}
+	}
+
+	return 0;
+}
